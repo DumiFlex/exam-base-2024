@@ -1,3 +1,6 @@
+# Baza de date
+*.sqlite
+
 # Logs
 logs
 *.log
