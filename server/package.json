@@ -2,7 +2,8 @@
   "type": "module",
   "scripts": {
     "reset-db": "node data-preload.mjs",
-    "start": "npx nodemon server.mjs"
+    "start": "node server.mjs",
+    "dev": "npx nodemon server.mjs"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
