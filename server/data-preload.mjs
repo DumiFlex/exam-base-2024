@@ -24,8 +24,10 @@ const preloadData = async (models) => {
 const deleteDatabaseAndPreload = async () => {
   try {
     console.log("Deleting database file...");
-    await fs.unlink(dbPath);
-    console.log("Database file deleted");
+    await fs
+      .unlink(dbPath)
+      .then(() => console.log("Database file deleted"))
+      .catch(() => console.log("Database file not found"));
 
     // Now import models AFTER deleting the database file
     const models = (await import("./models/index.mjs")).default;
@@ -33,7 +35,7 @@ const deleteDatabaseAndPreload = async () => {
     await preloadData(models);
     console.log("Database preloaded successfully.");
   } catch (error) {
-    console.error("Error deleting database:", error);
+    console.error("Error deleting database file and preloading data:", error);
   }
 };
 
